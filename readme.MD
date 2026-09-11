@@ -10,8 +10,7 @@
     * Organización del trabajo, como generar un paso a paso para avanzar e ir registrando el progreso.
     * Apoyo para comentar el código.
 
-<small> Información del Proyecto </small
->
+<small> Información del Proyecto </small>
 Todo este trabajo fue desarrollado a partir del siguiente caso ficticio:
 
 ### 1. Contexto y problema
