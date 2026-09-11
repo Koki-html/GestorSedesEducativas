@@ -14,16 +14,19 @@ def cargar_datos(nombre_archivo):
 
 
 def buscar_por_id(registros, pk):
+	"""Busca un registro por su identificador y devuelve None si no existe."""
 	return next((registro for registro in registros if registro.get('id') == pk), None)
 
 
 def calcular_cumplimiento(avance, meta_periodo):
+	"""Calcula el porcentaje de avance respecto al valor objetivo."""
 	if not meta_periodo:
 		return 0
 	return round(avance / meta_periodo * 100, 2)
 
 
 def clasificar_semaforo(cumplimiento):
+	"""Asigna un color según el porcentaje de cumplimiento alcanzado."""
 	if cumplimiento >= 100:
 		return 'verde'
 	if cumplimiento >= 60:
@@ -32,6 +35,7 @@ def clasificar_semaforo(cumplimiento):
 
 
 def cargar_metas():
+	"""Carga metas y combina sus resultados y relaciones asociadas."""
 	metas = cargar_datos('metas.json')
 	resultados = cargar_datos('resultados.json')
 	periodos = cargar_datos('periodos.json')
@@ -41,10 +45,12 @@ def cargar_metas():
 		resultado['meta_id']: resultado for resultado in resultados
 	}
 
+	# Se indexan los resultados por meta para evitar recorrerlos repetidamente.
 	metas_relacionadas = []
 	for meta in metas:
 		resultado = resultados_por_meta.get(meta['id'])
 		if resultado is not None:
+			# El semáforo se calcula una sola vez y queda disponible para las vistas.
 			cumplimiento = calcular_cumplimiento(
 				resultado['avance'],
 				meta['valor_objetivo'],
@@ -72,6 +78,7 @@ def inicio(request):
 
 
 def lista_metas(request):
+	"""Muestra todas las metas con su progreso y relaciones asociadas."""
 	return render(
 		request,
 		'resultados/lista_metas.html',
@@ -80,7 +87,10 @@ def lista_metas(request):
 
 
 def detalle_meta(request, pk):
+	"""Muestra una meta concreta o responde con un error 404."""
 	meta = buscar_por_id(cargar_metas(), pk)
+
+	# Evita renderizar una página vacía cuando el identificador no existe.
 	if meta is None:
 		raise Http404("Meta no encontrada")
 
@@ -88,7 +98,9 @@ def detalle_meta(request, pk):
 
 
 def informe_resumen(request):
+	"""Construye el resumen general de cumplimiento de las metas."""
 	metas = cargar_metas()
+	# Cada grupo reúne las metas que comparten el color de su semáforo.
 	semaforos = [
 		{
 			'nombre': nombre,
@@ -106,6 +118,7 @@ def informe_resumen(request):
 	]
 	for semaforo in semaforos:
 		semaforo['cantidad'] = len(semaforo['metas'])
+	# Solo se consideran metas con resultado para calcular el promedio.
 	cumplimientos = [
 		meta['resultado']['cumplimiento']
 		for meta in metas
@@ -127,7 +140,10 @@ def informe_resumen(request):
 
 
 def resultado_responsable(request, pk):
+	"""Muestra las metas asignadas a un responsable."""
 	responsable = buscar_por_id(cargar_datos('responsables.json'), pk)
+
+	# El responsable debe existir antes de consultar sus metas relacionadas.
 	if responsable is None:
 		raise Http404("Responsable no encontrado")
 
@@ -140,7 +156,10 @@ def resultado_responsable(request, pk):
 
 
 def tablero_sede(request, pk):
+	"""Muestra las metas asociadas a una sede educativa."""
 	sede = buscar_por_id(cargar_datos('sedes.json'), pk)
+
+	# La sede debe existir antes de consultar sus metas relacionadas.
 	if sede is None:
 		raise Http404("Sede no encontrada")
 
