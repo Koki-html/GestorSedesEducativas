@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Informe de resultados</h1>
+
+<div class="summary-grid">
+	<section class="summary-panel">
+		<h2>Total de metas</h2>
+		<p class="metric-value">{{ total_metas }}</p>
+	</section>
+	<section class="summary-panel">
+		<h2>Cumplimiento promedio</h2>
+		<p class="metric-value">{{ promedio_cumplimiento }}%</p>
+	</section>
+</div>
+
+<h2>Semaforo de metas</h2>
+{% for semaforo in semaforos %}
+	<section class="semaforo-section">
+		<h3 class="semaforo-title semaforo-{{ semaforo.codigo }}">
+			{{ semaforo.nombre }}
+			<span>{{ semaforo.cantidad }} metas</span>
+		</h3>
+		{% for meta in semaforo.metas %}
+			<p class="list-option">
+				<a href="{% url 'resultados:detalle_meta' meta.id %}">
+					{{ meta.indicador }}
+					<span class="meta-context">
+						Cumplimiento: {{ meta.resultado.cumplimiento }}% |
+						Avance: {{ meta.resultado.avance }}%
+					</span>
+				</a>
+			</p>
+		{% empty %}
+			<p class="empty-state">No hay metas en esta categoría.</p>
+		{% endfor %}
+	</section>
+{% empty %}
+	<p>No hay resultados calculados.</p>
+{% endfor %}
+
+<a href="{% url 'resultados:inicio' %}">Volver a Resultados</a>
+{% endblock %}

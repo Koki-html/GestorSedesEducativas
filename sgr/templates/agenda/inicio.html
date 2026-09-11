@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Agenda</h1>
+<p>Consulta y organiza los compromisos de las sedes educativas.</p>
+
+
+<nav class="option-grid" aria-label="Opciones de agenda">
+	<a class="menu-option" href="{% url 'agenda:lista_compromisos' %}">Ver lista de compromisos</a>
+	<a class="menu-option" href="{% url 'agenda:resumen_agenda' %}">Ver resumen de agenda</a>
+</nav>
+{% endblock %}

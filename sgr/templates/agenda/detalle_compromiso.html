@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>{{ compromiso.origen }}</h1>
+<p><strong>Fecha comprometida:</strong> <span class="detail-value">{{ compromiso.fecha_comprometida }}</span></p>
+<p><strong>Prioridad:</strong> <span class="detail-value">{{ compromiso.prioridad }}</span></p>
+<p><strong>Estado:</strong> <span class="detail-value">{{ compromiso.estado }}</span></p>
+<p>
+	<strong>Sede:</strong>
+	<span class="detail-value">
+		{% if compromiso.sede %}
+			<a href="{% url 'organizacion:detalle_sede' compromiso.sede.id %}">
+				{{ compromiso.sede.nombre }}
+			</a>
+		{% else %}
+			Sede no encontrada
+		{% endif %}
+	</span>
+</p>
+<p>
+	<strong>Responsable:</strong>
+	<span class="detail-value">
+		{% if compromiso.responsable %}
+			<a href="{% url 'organizacion:detalle_responsable' compromiso.responsable.id %}">
+				{{ compromiso.responsable.nombre }}
+			</a>
+		{% else %}
+			Responsable no encontrado
+		{% endif %}
+	</span>
+</p>
+<a href="{% url 'agenda:lista_compromisos' %}">Volver a compromisos</a>
+{% endblock %}

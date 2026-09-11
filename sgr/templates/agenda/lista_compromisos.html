@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Compromisos</h1>
+
+{% for compromiso in compromisos %}
+	<p class="list-option">
+		<a href="{% url 'agenda:detalle_compromiso' compromiso.id %}">
+			{{ compromiso.origen }} | {{ compromiso.fecha_comprometida }}
+		</a>
+	</p>
+{% empty %}
+	<p>No hay compromisos registrados.</p>
+{% endfor %}
+
+<a href="{% url 'agenda:inicio' %}">Volver a Agenda</a>
+{% endblock %}

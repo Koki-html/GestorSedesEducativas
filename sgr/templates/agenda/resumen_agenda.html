@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Resumen de Agenda</h1>
+<p><strong>Total de compromisos:</strong> {{ total }}</p>
+
+<div class="summary-grid">
+	<section class="summary-panel">
+		<h2>Por estado</h2>
+		{% for estado in estados %}
+			<h3>{{ estado.nombre }} ({{ estado.cantidad }})</h3>
+			<ul>
+				{% for compromiso in estado.compromisos %}
+					<li>
+						<a href="{% url 'agenda:detalle_compromiso' compromiso.id %}">
+							{{ compromiso.origen }}
+						</a>
+						- {{ compromiso.fecha_comprometida }}
+					</li>
+				{% endfor %}
+			</ul>
+		{% empty %}
+			<p>No hay estados registrados.</p>
+		{% endfor %}
+	</section>
+
+	<section class="summary-panel">
+		<h2>Por prioridad</h2>
+		{% for prioridad in prioridades %}
+			<h3>{{ prioridad.nombre }} ({{ prioridad.cantidad }})</h3>
+			<ul>
+				{% for compromiso in prioridad.compromisos %}
+					<li>
+						<a href="{% url 'agenda:detalle_compromiso' compromiso.id %}">
+							{{ compromiso.origen }}
+						</a>
+						- {{ compromiso.fecha_comprometida }}
+					</li>
+				{% endfor %}
+			</ul>
+		{% empty %}
+			<p>No hay prioridades registradas.</p>
+		{% endfor %}
+	</section>
+</div>
+
+<a href="{% url 'agenda:inicio' %}">Volver a Agenda</a>
+{% endblock %}

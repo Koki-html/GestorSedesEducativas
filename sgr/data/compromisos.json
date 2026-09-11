@@ -1,0 +1,74 @@
+[
+	{
+		"id": 1,
+		"origen": "Comite academico",
+		"sede_id": 1,
+		"responsable_id": 1,
+		"fecha_comprometida": "2026-03-15",
+		"prioridad": "alta",
+		"estado": "En proceso"
+	},
+	{
+		"id": 2,
+		"origen": "Reunion de coordinadores",
+		"sede_id": 2,
+		"responsable_id": 2,
+		"fecha_comprometida": "2026-04-10",
+		"prioridad": "media",
+		"estado": "Pendiente"
+	},
+	{
+		"id": 3,
+		"origen": "Comite de convivencia",
+		"sede_id": 3,
+		"responsable_id": 3,
+		"fecha_comprometida": "2026-04-20",
+		"prioridad": "alta",
+		"estado": "En proceso"
+	},
+	{
+		"id": 4,
+		"origen": "Mesa de infraestructura",
+		"sede_id": 4,
+		"responsable_id": 4,
+		"fecha_comprometida": "2026-05-05",
+		"prioridad": "alta",
+		"estado": "Pendiente"
+	},
+	{
+		"id": 5,
+		"origen": "Consejo academico",
+		"sede_id": 1,
+		"responsable_id": 5,
+		"fecha_comprometida": "2026-05-25",
+		"prioridad": "media",
+		"estado": "Realizado"
+	},
+	{
+		"id": 6,
+		"origen": "Revision administrativa",
+		"sede_id": 2,
+		"responsable_id": 6,
+		"fecha_comprometida": "2026-06-12",
+		"prioridad": "critica",
+		"estado": "Ingresado"
+	},
+	{
+		"id": 7,
+		"origen": "Actualizacion de carteleras informativas",
+		"sede_id": 1,
+		"responsable_id": 5,
+		"fecha_comprometida": "2026-07-08",
+		"prioridad": "baja",
+		"estado": "Ingresado"
+	},
+	{
+		"id": 8,
+		"origen": "Organizacion de archivo historico",
+		"sede_id": 4,
+		"responsable_id": 4,
+		"fecha_comprometida": "2026-07-22",
+		"prioridad": "baja",
+		"estado": "Pendiente"
+	}
+]

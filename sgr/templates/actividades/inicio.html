@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Actividades</h1>
+<p>Consulta y gestiona las actividades de las sedes educativas.</p>
+
+
+<nav class="option-grid" aria-label="Opciones de actividades">
+	<a class="menu-option" href="{% url 'actividades:lista_actividades' %}">Ver lista de actividades</a>
+	<a class="menu-option" href="{% url 'actividades:lista_evidencias' %}">Ver lista de evidencias</a>
+</nav>
+{% endblock %}

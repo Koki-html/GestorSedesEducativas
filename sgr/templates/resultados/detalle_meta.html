@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>{{ meta.indicador }}</h1>
+<p><strong>Indicador:</strong> <span class="detail-value">{{ meta.indicador }}</span></p>
+<p><strong>Valor objetivo:</strong> <span class="detail-value">{{ meta.valor_objetivo }}%</span></p>
+<p><strong>Ponderacion:</strong> <span class="detail-value">{{ meta.ponderacion }}</span></p>
+<p><strong>Periodo:</strong>
+	<span class="detail-value">
+		{% if meta.periodo %}
+			{{ meta.periodo.fecha_inicio }} a {{ meta.periodo.fecha_termino }}
+		{% else %}
+			Periodo no encontrado
+		{% endif %}
+	</span>
+</p>
+<p><strong>Responsable:</strong>
+	<span class="detail-value">
+		{% if meta.responsable %}
+			<a href="{% url 'resultados:resultado_responsable' meta.responsable.id %}">
+				{{ meta.responsable.nombre }}
+			</a>
+		{% else %}
+			No aplica
+		{% endif %}
+	</span>
+</p>
+<p><strong>Sede:</strong>
+	<span class="detail-value">
+		{% if meta.sede %}
+			<a href="{% url 'resultados:tablero_sede' meta.sede.id %}">
+				{{ meta.sede.nombre }}
+			</a>
+		{% else %}
+			No aplica
+		{% endif %}
+	</span>
+</p>
+{% if meta.resultado %}
+	<p><strong>Avance:</strong> <span class="detail-value">{{ meta.resultado.avance }}%</span></p>
+	<p><strong>Cumplimiento:</strong> <span class="detail-value">{{ meta.resultado.cumplimiento }}%</span></p>
+	<p><strong>Semaforo:</strong> <span class="detail-value">{{ meta.resultado.semaforo }}</span></p>
+	<p><strong>Fecha de calculo:</strong> <span class="detail-value">{{ meta.resultado.fecha_calculo }}</span></p>
+{% else %}
+	<p>No hay un resultado calculado para esta meta.</p>
+{% endif %}
+<a href="{% url 'resultados:lista_metas' %}">Volver a metas</a>
+{% endblock %}

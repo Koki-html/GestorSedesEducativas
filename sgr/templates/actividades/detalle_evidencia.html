@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Detalle de la evidencia</h1>
+<p><strong>Codigo:</strong> {{ evidencia.codigo }}</p>
+<p><strong>Fecha:</strong> {{ evidencia.fecha }}</p>
+<p><strong>Estado:</strong> {{ evidencia.estado }}</p>
+<p><strong>Observacion:</strong> {{ evidencia.observacion }}</p>
+<p>
+	<strong>Actividad:</strong>
+	{% if actividad %}
+		<a href="{% url 'actividades:detalle_actividad' actividad.id %}">
+			{{ actividad.accion }}
+		</a>
+	{% else %}
+		Actividad no encontrada
+	{% endif %}
+</p>
+<p>
+	<strong>Archivo:</strong>
+	<a href="{% url 'actividades:evidence' evidencia.id %}" target="_blank" rel="noopener">
+		Abrir evidencia
+	</a>
+</p>
+<a href="{% url 'actividades:lista_evidencias' %}">Volver a evidencias</a>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="topbar__inner">
+            <a class="brand" href="{% url 'inicio' %}">
+                <span class="brand__mark">SG</span>
+                <span>Sistema de Gestión</span>
+            </a>
+            <span class="topbar__section">Sedes educativas</span>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        {% block contenido %}
+        {% endblock %}
+    </main>
+
+</body>
+</html>

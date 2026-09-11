@@ -1,0 +1,65 @@
+[
+	{
+		"meta_id": 1,
+		"avance": 82,
+		"cumplimiento": 91.11,
+		"semaforo": "ambar",
+		"fecha_calculo": "2026-03-10"
+	},
+	{
+		"meta_id": 2,
+		"avance": 95,
+		"cumplimiento": 100,
+		"semaforo": "verde",
+		"fecha_calculo": "2026-03-10"
+	},
+	{
+		"meta_id": 3,
+		"avance": 76,
+		"cumplimiento": 89.41,
+		"semaforo": "ambar",
+		"fecha_calculo": "2026-03-10"
+	},
+	{
+		"meta_id": 4,
+		"avance": 84,
+		"cumplimiento": 105,
+		"semaforo": "verde",
+		"fecha_calculo": "2026-03-10"
+	},
+	{
+		"meta_id": 5,
+		"avance": 68,
+		"cumplimiento": 75.56,
+		"semaforo": "ambar",
+		"fecha_calculo": "2026-08-15"
+	},
+	{
+		"meta_id": 6,
+		"avance": 72,
+		"cumplimiento": 72,
+		"semaforo": "ambar",
+		"fecha_calculo": "2026-08-15"
+	},
+	{
+		"meta_id": 7,
+		"avance": 45,
+		"cumplimiento": 50,
+		"semaforo": "rojo",
+		"fecha_calculo": "2026-09-01"
+	},
+	{
+		"meta_id": 8,
+		"avance": 40,
+		"cumplimiento": 44.44,
+		"semaforo": "rojo",
+		"fecha_calculo": "2026-09-01"
+	},
+	{
+		"meta_id": 9,
+		"avance": 25,
+		"cumplimiento": 25,
+		"semaforo": "rojo",
+		"fecha_calculo": "2026-09-01"
+	}
+]

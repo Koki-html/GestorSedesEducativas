@@ -1,0 +1,66 @@
+[
+	{
+		"id": 1,
+		"sede_id": 1,
+		"nombre": "Sala de informatica",
+		"tipo": "aula especializada",
+		"ubicacion": "Bloque A, segundo piso",
+		"estado": "disponible"
+	},
+	{
+		"id": 2,
+		"sede_id": 2,
+		"nombre": "Biblioteca",
+		"tipo": "biblioteca",
+		"ubicacion": "Bloque principal",
+		"estado": "disponible"
+	},
+	{
+		"id": 3,
+		"sede_id": 1,
+		"nombre": "Laboratorio de ciencias",
+		"tipo": "laboratorio",
+		"ubicacion": "Bloque B, primer piso",
+		"estado": "disponible"
+	},
+	{
+		"id": 4,
+		"sede_id": 2,
+		"nombre": "Aula multiple",
+		"tipo": "auditorio",
+		"ubicacion": "Bloque principal, primer piso",
+		"estado": "en mantenimiento"
+	},
+	{
+		"id": 5,
+		"sede_id": 3,
+		"nombre": "Cancha cubierta",
+		"tipo": "deportivo",
+		"ubicacion": "Zona deportiva",
+		"estado": "disponible"
+	},
+	{
+		"id": 6,
+		"sede_id": 3,
+		"nombre": "Sala de reuniones",
+		"tipo": "administrativo",
+		"ubicacion": "Bloque administrativo",
+		"estado": "disponible"
+	},
+	{
+		"id": 7,
+		"sede_id": 4,
+		"nombre": "Aula de musica",
+		"tipo": "aula especializada",
+		"ubicacion": "Bloque cultural",
+		"estado": "no disponible"
+	},
+	{
+		"id": 8,
+		"sede_id": 4,
+		"nombre": "Biblioteca infantil",
+		"tipo": "biblioteca",
+		"ubicacion": "Bloque principal",
+		"estado": "disponible"
+	}
+]

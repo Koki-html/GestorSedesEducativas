@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Tablero de {{ sede.nombre }}</h1>
+<p><strong>Direccion:</strong> <span class="detail-value">{{ sede.direccion }}</span></p>
+<p><strong>Estado:</strong> <span class="detail-value">{{ sede.estado }}</span></p>
+
+<h2>Metas de la sede</h2>
+{% for meta in metas %}
+	<p class="list-option">
+		<a href="{% url 'resultados:detalle_meta' meta.id %}">
+			{{ meta.indicador }}
+			<span class="meta-context">Avance: {{ meta.resultado.avance|default:'Sin calcular' }}%</span>
+		</a>
+	</p>
+{% empty %}
+	<p>No hay metas asignadas a esta sede.</p>
+{% endfor %}
+<a href="{% url 'resultados:lista_metas' %}">Volver a metas</a>
+{% endblock %}

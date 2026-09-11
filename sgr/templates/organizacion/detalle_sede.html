@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>{{ sede.nombre }}</h1>
+<p><strong>Direccion:</strong> <span class="detail-value">{{ sede.direccion }}</span></p>
+<p><strong>Comuna:</strong> <span class="detail-value">{{ sede.comuna }}</span></p>
+<p><strong>Encargado:</strong> <span class="detail-value">{{ sede.encargado }}</span></p>
+<p><strong>Estado:</strong> <span class="detail-value">{{ sede.estado }}</span></p>
+<a href="{% url 'organizacion:lista_sedes' %}">Volver a sedes</a>
+{% endblock %}

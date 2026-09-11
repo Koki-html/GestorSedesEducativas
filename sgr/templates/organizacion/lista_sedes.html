@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{# La vista lista_sedes envia la coleccion "sedes" a esta plantilla. #}
+{% block contenido %}
+
+<h1>Lista de Sedes</h1>
+
+{# El bucle imprime una linea por cada sede. #}
+{% for sede in sedes %}
+    <p class="list-option">
+        <a href="{% url 'organizacion:detalle_sede' sede.id %}">
+            {{ sede.nombre }}
+        </a>
+    </p>
+{% endfor %}
+
+{% endblock %}

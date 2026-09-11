@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Resultados</h1>
+<p>Consulta el avance de las metas y resultados de las sedes educativas.</p>
+
+<nav class="option-grid" aria-label="Opciones de resultados">
+	<a class="menu-option" href="{% url 'resultados:lista_metas' %}">Ver lista de metas</a>
+	<a class="menu-option" href="{% url 'resultados:informe_resumen' %}">Ver informe de resultados</a>
+</nav>
+
+{% endblock %}

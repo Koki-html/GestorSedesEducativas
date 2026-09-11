@@ -1,0 +1,100 @@
+[
+	{
+		"id": 1,
+		"fecha": "2026-02-12",
+		"sede_id": 1,
+		"espacio_id": 1,
+		"tipo": "mantenimiento",
+		"descripcion": "Revision preventiva de los equipos de la sala de informatica",
+		"accion": "Actualizar inventario y reemplazar equipos con fallas",
+		"responsable_id": 2,
+		"estado": "completada",
+		"aprobada": true
+	},
+	{
+		"id": 2,
+		"fecha": "2026-03-05",
+		"sede_id": 2,
+		"espacio_id": 2,
+		"tipo": "formacion",
+		"descripcion": "Taller de comprension lectora para docentes",
+		"accion": "Realizar taller y registrar asistencia",
+		"responsable_id": 1,
+		"estado": "programada",
+		"aprobada": true
+	},
+	{
+		"id": 3,
+		"fecha": "2026-03-18",
+		"sede_id": 3,
+		"espacio_id": 5,
+		"tipo": "deportiva",
+		"descripcion": "Jornada de actividad fisica para estudiantes",
+		"accion": "Organizar horarios y registrar participantes",
+		"responsable_id": 3,
+		"estado": "programada",
+		"aprobada": true
+	},
+	{
+		"id": 4,
+		"fecha": "2026-04-02",
+		"sede_id": 4,
+		"espacio_id": 8,
+		"tipo": "lectura",
+		"descripcion": "Club de lectura infantil",
+		"accion": "Seleccionar textos y preparar actividades de lectura",
+		"responsable_id": 5,
+		"estado": "pendiente",
+		"aprobada": true
+	},
+	{
+		"id": 5,
+		"fecha": "2026-04-15",
+		"sede_id": 1,
+		"espacio_id": 3,
+		"tipo": "academica",
+		"descripcion": "Feria de proyectos cientificos",
+		"accion": "Evaluar proyectos y publicar resultados",
+		"responsable_id": 1,
+		"estado": "programada",
+		"aprobada": true
+	},
+	{
+		"id": 6,
+		"fecha": "2026-05-08",
+		"sede_id": 2,
+		"espacio_id": 2,
+		"tipo": "cultural",
+		"descripcion": "Encuentro de lectura con las familias",
+		"accion": "Coordinar invitados y material de apoyo",
+		"responsable_id": 6,
+		"estado": "rechazada",
+		"aprobada": false,
+		"corregida": false,
+		"avance_aprobado": 0
+	},
+	{
+		"id": 7,
+		"fecha": "2026-05-20",
+		"sede_id": 3,
+		"espacio_id": 6,
+		"tipo": "convivencia",
+		"descripcion": "Taller de mediacion escolar",
+		"accion": "Aplicar encuesta y elaborar compromisos de convivencia",
+		"responsable_id": 3,
+		"estado": "completada",
+		"aprobada": true
+	},
+	{
+		"id": 8,
+		"fecha": "2026-06-03",
+		"sede_id": 4,
+		"espacio_id": 8,
+		"tipo": "mantenimiento",
+		"descripcion": "Organizacion y depuracion de la biblioteca infantil",
+		"accion": "Clasificar libros y actualizar el inventario",
+		"responsable_id": 4,
+		"estado": "en progreso",
+		"aprobada": true
+	}
+]

@@ -1,0 +1,50 @@
+[
+	{
+		"id": 1,
+		"nombre": "Laura Gomez",
+		"cargo": "Coordinadora academica",
+		"especialidad": "Gestion educativa",
+		"sede_id": 1,
+		"activo": true
+	},
+	{
+		"id": 2,
+		"nombre": "Diego Ramirez",
+		"cargo": "Coordinador de tecnologia",
+		"especialidad": "Sistemas",
+		"sede_id": 2,
+		"activo": true
+	},
+	{
+		"id": 3,
+		"nombre": "Marta Castillo",
+		"cargo": "Coordinadora de convivencia",
+		"especialidad": "Orientacion escolar",
+		"sede_id": 3,
+		"activo": true
+	},
+	{
+		"id": 4,
+		"nombre": "Jorge Herrera",
+		"cargo": "Encargado de infraestructura",
+		"especialidad": "Mantenimiento",
+		"sede_id": 4,
+		"activo": true
+	},
+	{
+		"id": 5,
+		"nombre": "Sofia Morales",
+		"cargo": "Docente lider",
+		"especialidad": "Lenguaje",
+		"sede_id": 1,
+		"activo": true
+	},
+	{
+		"id": 6,
+		"nombre": "Ricardo Pena",
+		"cargo": "Auxiliar administrativo",
+		"especialidad": "Gestion documental",
+		"sede_id": 2,
+		"activo": false
+	}
+]

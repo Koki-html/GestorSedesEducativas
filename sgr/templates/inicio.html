@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{# La vista principal envia la lista llamada "aplicaciones". #}
+{% block contenido %}
+
+<h1>Bienvenido al Sistema de Gestión de Sedes Educativas</h1>
+<ul class="module-menu">
+    {# Se crea un enlace por cada modulo recibido desde la vista. #}
+    {% for aplicacion in aplicaciones %}
+        <li class="menu-option">
+            <a href="{{ aplicacion.ruta }}">
+                 {{ aplicacion.nombre }}
+                </a>
+            </li>
+    {% endfor %}
+</ul>
+{% endblock %}

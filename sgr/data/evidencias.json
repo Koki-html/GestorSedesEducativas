@@ -1,0 +1,74 @@
+[
+	{
+		"id": 1,
+		"actividad_id": 1,
+		"codigo": "EVD-2026-001",
+		"archivo_url": "/static/img/EpicEvidence.jpg",
+		"fecha": "2026-02-12",
+		"estado": "validada",
+		"observacion": "Acta de mantenimiento firmada por el responsable"
+	},
+	{
+		"id": 2,
+		"actividad_id": 2,
+		"codigo": "EVD-2026-002",
+		"archivo_url": "/static/img/EpicEvidence.jpg",
+		"fecha": "2026-03-05",
+		"estado": "pendiente",
+		"observacion": "Falta cargar el registro de asistencia"
+	},
+	{
+		"id": 3,
+		"actividad_id": 3,
+		"codigo": "EVD-2026-003",
+		"archivo_url": "/static/img/EpicEvidence.jpg",
+		"fecha": "2026-03-18",
+		"estado": "validada",
+		"observacion": "Planilla de participantes revisada"
+	},
+	{
+		"id": 4,
+		"actividad_id": 4,
+		"codigo": "EVD-2026-004",
+		"archivo_url": "/static/img/EpicEvidence.jpg",
+		"fecha": "2026-04-02",
+		"estado": "pendiente",
+		"observacion": "Pendiente de validacion por coordinacion"
+	},
+	{
+		"id": 5,
+		"actividad_id": 5,
+		"codigo": "EVD-2026-005",
+		"archivo_url": "/static/img/EpicEvidence.jpg",
+		"fecha": "2026-04-15",
+		"estado": "validada",
+		"observacion": "Registro fotografico de la feria"
+	},
+	{
+		"id": 6,
+		"actividad_id": 6,
+		"codigo": "EVD-2026-006",
+		"archivo_url": "/static/img/EpicEvidence.jpg",
+		"fecha": "2026-05-08",
+		"estado": "anulada",
+		"observacion": "Actividad cancelada por falta de disponibilidad"
+	},
+	{
+		"id": 7,
+		"actividad_id": 7,
+		"codigo": "EVD-2026-007",
+		"archivo_url": "/static/img/EpicEvidence.jpg",
+		"fecha": "2026-05-20",
+		"estado": "validada",
+		"observacion": "Acta del taller y compromisos firmados"
+	},
+	{
+		"id": 8,
+		"actividad_id": 8,
+		"codigo": "EVD-2026-008",
+		"archivo_url": "/static/img/EpicEvidence.jpg",
+		"fecha": "2026-06-03",
+		"estado": "pendiente",
+		"observacion": "Pendiente de cargar inventario actualizado"
+	}
+]

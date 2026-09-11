@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Detalle de la actividad</h1>
+<p><strong>Fecha:</strong> <span class="detail-value">{{ actividad.fecha }}</span></p>
+<p><strong>Sede:</strong>
+	<span class="detail-value">
+		<a href="{% url 'organizacion:detalle_sede' sede.id %}">{{ sede.nombre }}</a>
+	</span>
+</p>
+<p><strong>Espacio:</strong> <span class="detail-value">{{ espacio.nombre }}</span></p>
+<p><strong>Tipo:</strong> <span class="detail-value">{{ actividad.tipo }}</span></p>
+<p><strong>Descripcion:</strong> <span class="detail-value">{{ actividad.descripcion }}</span></p>
+<p><strong>Accion:</strong> <span class="detail-value">{{ actividad.accion }}</span></p>
+<p><strong>Responsable:</strong>
+	<span class="detail-value">
+		<a href="{% url 'organizacion:detalle_responsable' responsable.id %}">{{ responsable.nombre }}</a>
+	</span>
+</p>
+<p><strong>Estado:</strong> <span class="detail-value">{{ actividad.estado }}</span></p>
+<a href="{% url 'actividades:lista_actividades' %}">Volver a actividades</a>
+{% endblock %}

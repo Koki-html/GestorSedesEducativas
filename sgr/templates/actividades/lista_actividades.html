@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{# La vista lista_actividades envia la coleccion "actividades" a esta plantilla. #}
+{% block contenido %}
+
+<h1>Lista de actividades</h1>
+
+{# El bucle imprime una linea por cada actividad. #}
+{% for actividad in actividades %}
+    <p class="list-option">
+        <a href="{% url 'actividades:detalle_actividad' actividad.id %}">
+            {{ actividad.accion }} | {{ actividad.fecha }}
+        </a>
+    </p>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,20 @@
+[
+	{
+		"id": 1,
+		"fecha_inicio": "2026-01-01",
+		"fecha_termino": "2026-06-30",
+		"estado": "activo"
+	},
+	{
+		"id": 2,
+		"fecha_inicio": "2026-07-01",
+		"fecha_termino": "2026-12-31",
+		"estado": "programado"
+	},
+	{
+		"id": 3,
+		"fecha_inicio": "2027-01-01",
+		"fecha_termino": "2027-06-30",
+		"estado": "futuro"
+	}
+]

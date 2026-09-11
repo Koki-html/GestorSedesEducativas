@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Ruta absoluta de la carpeta que contiene manage.py y las aplicaciones.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
+# Aplicaciones que Django debe cargar, incluidas las del proyecto.
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -73,7 +73,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'sgr.wsgi.application'
 
 
-# Database
+# Base de datos utilizada por el proyecto.
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
 DATABASES = {
@@ -84,7 +84,7 @@ DATABASES = {
 }
 
 
-# Password validation
+# Validaciones que se aplican al crear o cambiar contrasenas de usuarios.
 # https://docs.djangoproject.com/en/6.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -103,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
+# Idioma, zona horaria y soporte para fechas internacionalizadas.
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
@@ -115,7 +115,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+# Configuracion para CSS, JavaScript e imagenes compartidos.
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'

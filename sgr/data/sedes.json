@@ -1,0 +1,34 @@
+[
+	{
+		"id": 1,
+		"nombre": "Sede Centro",
+		"direccion": "Carrera 5 # 10-20",
+		"comuna": "Centro",
+		"encargado": "Ana Torres",
+		"estado": "activa"
+	},
+	{
+		"id": 2,
+		"nombre": "Sede Norte",
+		"direccion": "Calle 24 # 8-15",
+		"comuna": "Norte",
+		"encargado": "Carlos Mendoza",
+		"estado": "activa"
+	},
+	{
+		"id": 3,
+		"nombre": "Sede Sur",
+		"direccion": "Avenida 12 # 35-08",
+		"comuna": "Sur",
+		"encargado": "Marta Castillo",
+		"estado": "activa"
+	},
+	{
+		"id": 4,
+		"nombre": "Sede Occidente",
+		"direccion": "Carrera 18 # 42-30",
+		"comuna": "Occidente",
+		"encargado": "Jorge Herrera",
+		"estado": "en mantenimiento"
+	}
+]

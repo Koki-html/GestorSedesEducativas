@@ -1,0 +1,83 @@
+[
+	{
+		"id": 1,
+		"periodo_id": 1,
+		"responsable_id": 1,
+		"sede_id": null,
+		"indicador": "Porcentaje de actividades academicas ejecutadas",
+		"valor_objetivo": 90,
+		"ponderacion": 0.6
+	},
+	{
+		"id": 2,
+		"periodo_id": 1,
+		"responsable_id": null,
+		"sede_id": 2,
+		"indicador": "Porcentaje de espacios disponibles",
+		"valor_objetivo": 95,
+		"ponderacion": 0.4
+	},
+	{
+		"id": 3,
+		"periodo_id": 1,
+		"responsable_id": 3,
+		"sede_id": null,
+		"indicador": "Porcentaje de compromisos de convivencia cumplidos",
+		"valor_objetivo": 85,
+		"ponderacion": 0.2
+	},
+	{
+		"id": 4,
+		"periodo_id": 1,
+		"responsable_id": null,
+		"sede_id": 3,
+		"indicador": "Porcentaje de actividades deportivas realizadas",
+		"valor_objetivo": 80,
+		"ponderacion": 0.3
+	},
+	{
+		"id": 5,
+		"periodo_id": 2,
+		"responsable_id": 4,
+		"sede_id": null,
+		"indicador": "Porcentaje de espacios habilitados",
+		"valor_objetivo": 90,
+		"ponderacion": 0.5
+	},
+	{
+		"id": 6,
+		"periodo_id": 2,
+		"responsable_id": null,
+		"sede_id": 4,
+		"indicador": "Porcentaje de inventario bibliografico actualizado",
+		"valor_objetivo": 100,
+		"ponderacion": 0.5
+	},
+	{
+		"id": 7,
+		"periodo_id": 2,
+		"responsable_id": 2,
+		"sede_id": null,
+		"indicador": "Porcentaje de talleres tecnologicos ejecutados",
+		"valor_objetivo": 90,
+		"ponderacion": 0.4
+	},
+	{
+		"id": 8,
+		"periodo_id": 2,
+		"responsable_id": null,
+		"sede_id": 1,
+		"indicador": "Porcentaje de espacios culturales habilitados",
+		"valor_objetivo": 90,
+		"ponderacion": 0.3
+	},
+	{
+		"id": 9,
+		"periodo_id": 2,
+		"responsable_id": 6,
+		"sede_id": null,
+		"indicador": "Porcentaje de documentos administrativos actualizados",
+		"valor_objetivo": 100,
+		"ponderacion": 0.3
+	}
+]

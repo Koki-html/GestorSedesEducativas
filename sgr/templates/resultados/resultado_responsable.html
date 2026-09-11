@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Resultados de {{ responsable.nombre }}</h1>
+<p><strong>Cargo:</strong> <span class="detail-value">{{ responsable.cargo }}</span></p>
+<p><strong>Especialidad:</strong> <span class="detail-value">{{ responsable.especialidad }}</span></p>
+
+<h2>Metas asignadas</h2>
+{% for meta in metas %}
+	<p class="list-option">
+		<a href="{% url 'resultados:detalle_meta' meta.id %}">
+			{{ meta.indicador }}
+			<span class="meta-context">Cumplimiento: {{ meta.resultado.cumplimiento|default:'Sin calcular' }}%</span>
+		</a>
+	</p>
+{% empty %}
+	<p>No hay metas asignadas a este responsable.</p>
+{% endfor %}
+<a href="{% url 'resultados:lista_metas' %}">Volver a metas</a>
+{% endblock %}

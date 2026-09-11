@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Metas</h1>
+
+{% for meta in metas %}
+	<p class="list-option">
+		<a href="{% url 'resultados:detalle_meta' meta.id %}">
+			{{ meta.indicador }}
+			<span class="meta-context">
+				Objetivo: {{ meta.valor_objetivo }}% |
+				Cumplimiento: {{ meta.resultado.cumplimiento|default:'Sin calcular' }}%
+			</span>
+		</a>
+	</p>
+{% empty %}
+	<p>No hay metas registradas.</p>
+{% endfor %}
+
+<a href="{% url 'resultados:inicio' %}">Volver a Resultados</a>
+{% endblock %}
