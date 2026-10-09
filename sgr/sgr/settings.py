@@ -11,9 +11,13 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import dotenv_values
+
 
 # Ruta absoluta de la carpeta que contiene manage.py y las aplicaciones.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# El archivo de variables está en la raíz del repositorio, un nivel sobre BASE_DIR.
+env = dotenv_values(BASE_DIR.parent / '.env')
 
 
 # Quick-start development settings - unsuitable for production
@@ -76,12 +80,17 @@ WSGI_APPLICATION = 'sgr.wsgi.application'
 # Base de datos utilizada por el proyecto.
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# SQLite permite ejecutar el prototipo sin depender de un servidor MySQL.
+DATABASES= {
+    "default": {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': env.get('DB_NAME'),
+            'USER': env.get('DB_USER'),
+            'PASSWORD': env.get('DB_PASSWORD'),
+            'HOST': env.get('DB_HOST'),
+            'PORT': env.get('DB_PORT'),
+        }
     }
-}
 
 
 # Validaciones que se aplican al crear o cambiar contrasenas de usuarios.
