@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
-<h1>{{ meta.indicador }}</h1>
-<p><strong>Indicador:</strong> <span class="detail-value">{{ meta.indicador }}</span></p>
-<p><strong>Valor objetivo:</strong> <span class="detail-value">{{ meta.valor_objetivo }}%</span></p>
-<p><strong>Ponderacion:</strong> <span class="detail-value">{{ meta.ponderacion }}</span></p>
-<p><strong>Periodo:</strong>
+<h1>{{ meta.nombre }}</h1>
+<p><strong>Descripción:</strong> <span class="detail-value">{{ meta.descripcion }}</span></p>
+<p><strong>Tipo de servicio:</strong> <span class="detail-value">{{ meta.tipo }}</span></p>
+<p><strong>Requisito de evidencia:</strong> <span class="detail-value">{{ meta.requisito_evidencia }}</span></p>
+<p><strong>Trimestre:</strong>
 	<span class="detail-value">
-		{% if meta.periodo %}
-			{{ meta.periodo.fecha_inicio }} a {{ meta.periodo.fecha_termino }}
+		{% if meta.trimestre %}
+			{{ meta.trimestre.fecha_inicio }} a {{ meta.trimestre.fecha_termino }}
 		{% else %}
-			Periodo no encontrado
+			Trimestre no encontrado
 		{% endif %}
 	</span>
 </p>
@@ -18,7 +18,7 @@
 	<span class="detail-value">
 		{% if meta.responsable %}
 			<a href="{% url 'resultados:resultado_responsable' meta.responsable.id %}">
-				{{ meta.responsable.nombre }}
+				{{ meta.responsable.nombres }} {{ meta.responsable.apellidos }}
 			</a>
 		{% else %}
 			No aplica

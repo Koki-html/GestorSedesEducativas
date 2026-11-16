@@ -8,9 +8,9 @@
 <p><strong>Observacion:</strong> {{ evidencia.observacion }}</p>
 <p>
 	<strong>Actividad:</strong>
-	{% if actividad %}
-		<a href="{% url 'actividades:detalle_actividad' actividad.id %}">
-			{{ actividad.accion }}
+	{% if evidencia.actividad %}
+		<a href="{% url 'actividades:detalle_actividad' evidencia.actividad.id %}">
+			{{ evidencia.actividad }}
 		</a>
 	{% else %}
 		Actividad no encontrada
@@ -19,7 +19,7 @@
 <p>
 	<strong>Archivo:</strong>
 	<a href="{% url 'actividades:evidence' evidencia.id %}" target="_blank" rel="noopener">
-		Abrir evidencia
+		{{ evidencia.ubicacion_referencia }}
 	</a>
 </p>
 <a href="{% url 'actividades:lista_evidencias' %}">Volver a evidencias</a>

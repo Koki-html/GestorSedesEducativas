@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>{{ crud_title }}</h1>
+
+{% if can_add %}
+    <p>
+        <a href="{% url crud_namespace|add:':'|add:create_url_name %}">Crear registro</a>
+    </p>
+{% endif %}
+
+{% for object in objects %}
+    <p class="list-option">
+        <a href="{% url crud_namespace|add:':'|add:detail_url_name object.pk %}">
+            {{ object }}
+        </a>
+        {% if can_change %}
+            |
+            <a href="{% url crud_namespace|add:':'|add:update_url_name object.pk %}">Editar</a>
+        {% endif %}
+        {% if can_delete %}
+            |
+            <a href="{% url crud_namespace|add:':'|add:delete_url_name object.pk %}">Eliminar</a>
+        {% endif %}
+    </p>
+{% empty %}
+    <p>No hay registros.</p>
+{% endfor %}
+{% endblock %}

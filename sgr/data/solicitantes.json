@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "rut": "33333333-3",
+    "nombres": "Maria",
+    "apellidos": "Soto",
+    "telefono": "+56911111111",
+    "correo": "maria.soto@example.com",
+    "direccion": "Pasaje Uno 15",
+    "sector_id": 1,
+    "estado": "activo"
+  },
+  {
+    "id": 2,
+    "rut": "44444444-4",
+    "nombres": "Carlos",
+    "apellidos": "Rojas",
+    "telefono": "+56922222222",
+    "correo": "carlos.rojas@example.com",
+    "direccion": "Avenida Dos 80",
+    "sector_id": 2,
+    "estado": "activo"
+  }
+]

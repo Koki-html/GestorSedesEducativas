@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "codigo": "ROL-ADMIN",
+    "nombre": "Administrador",
+    "grupo": "Administradores",
+    "estado": "activo"
+  },
+  {
+    "id": 2,
+    "codigo": "ROL-TECNICO",
+    "nombre": "Tecnico",
+    "grupo": "Tecnicos",
+    "estado": "activo"
+  }
+]

@@ -14,5 +14,5 @@ class CompromisoAdmin(admin.ModelAdmin):
 		'estado',
 	)
 	list_filter = ('prioridad', 'estado', 'fecha_comprometida')
-	search_fields = ('origen', 'sede__nombre', 'responsable__nombre')
+	search_fields = ('origen', 'sede__nombre', 'responsable__nombres', 'responsable__apellidos')
 	date_hierarchy = 'fecha_comprometida'

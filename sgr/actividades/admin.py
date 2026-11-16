@@ -1,17 +1,38 @@
 from django.contrib import admin
-from .models import Actividad, Evidencia
+
+from .models import (
+    ActividadMantenimiento,
+    EvidenciaMantenimiento,
+    SolicitudMantenimiento,
+)
 
 
-@admin.register(Actividad)
-class ActividadAdmin(admin.ModelAdmin):
-	list_display = ('id', 'fecha', 'tipo', 'sede', 'responsable', 'estado', 'aprobada')
-	list_filter = ('estado', 'tipo', 'aprobada', 'corregida')
-	search_fields = ('descripcion', 'accion', 'tipo')
-	date_hierarchy = 'fecha'
+@admin.register(ActividadMantenimiento)
+class ActividadMantenimientoAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'fecha',
+        'colaborador',
+        'asignacion_meta',
+        'tipo',
+        'responsable',
+        'estado',
+    )
+    list_filter = ('estado', 'tipo', 'sector')
+    search_fields = ('descripcion', 'origen', 'solicitante__nombres')
+    date_hierarchy = 'fecha'
 
 
-@admin.register(Evidencia)
-class EvidenciaAdmin(admin.ModelAdmin):
-	list_display = ('codigo', 'actividad', 'fecha', 'estado')
-	list_filter = ('estado', 'fecha')
-	search_fields = ('codigo', 'observacion')
+@admin.register(SolicitudMantenimiento)
+class SolicitudMantenimientoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'fecha_ingreso', 'solicitante', 'tipo', 'estado')
+    list_filter = ('estado', 'tipo', 'subtipo')
+    search_fields = ('solicitante__nombres', 'solicitante__apellidos')
+    date_hierarchy = 'fecha_ingreso'
+
+
+@admin.register(EvidenciaMantenimiento)
+class EvidenciaMantenimientoAdmin(admin.ModelAdmin):
+    list_display = ('codigo', 'actividad', 'solicitud', 'autor', 'fecha', 'estado')
+    list_filter = ('estado', 'fecha', 'tipo')
+    search_fields = ('codigo', 'observacion', 'ubicacion_referencia')

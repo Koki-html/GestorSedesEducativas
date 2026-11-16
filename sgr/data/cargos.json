@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "codigo": "CAR-COORD",
+    "nombre": "Coordinador de mantenimiento",
+    "descripcion": "Coordina las actividades de mantenimiento.",
+    "estado": "activo"
+  },
+  {
+    "id": 2,
+    "codigo": "CAR-TEC",
+    "nombre": "Tecnico de mantenimiento",
+    "descripcion": "Ejecuta labores tecnicas de mantenimiento.",
+    "estado": "activo"
+  }
+]

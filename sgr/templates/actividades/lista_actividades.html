@@ -9,7 +9,7 @@
 {% for actividad in actividades %}
     <p class="list-option">
         <a href="{% url 'actividades:detalle_actividad' actividad.id %}">
-            {{ actividad.accion }} | {{ actividad.fecha }}
+            {{ actividad.descripcion|truncatechars:80 }} | {{ actividad.fecha }}
         </a>
     </p>
 {% endfor %}

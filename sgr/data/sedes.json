@@ -1,34 +1,20 @@
 [
-	{
-		"id": 1,
-		"nombre": "Sede Centro",
-		"direccion": "Carrera 5 # 10-20",
-		"comuna": "Centro",
-		"encargado": "Ana Torres",
-		"estado": "activa"
-	},
-	{
-		"id": 2,
-		"nombre": "Sede Norte",
-		"direccion": "Calle 24 # 8-15",
-		"comuna": "Norte",
-		"encargado": "Carlos Mendoza",
-		"estado": "activa"
-	},
-	{
-		"id": 3,
-		"nombre": "Sede Sur",
-		"direccion": "Avenida 12 # 35-08",
-		"comuna": "Sur",
-		"encargado": "Marta Castillo",
-		"estado": "activa"
-	},
-	{
-		"id": 4,
-		"nombre": "Sede Occidente",
-		"direccion": "Carrera 18 # 42-30",
-		"comuna": "Occidente",
-		"encargado": "Jorge Herrera",
-		"estado": "en mantenimiento"
-	}
+  {
+    "id": 1,
+    "codigo": "SED-CENTRO",
+    "nombre": "Sede Educativa Centro",
+    "direccion": "Av. Principal 100",
+    "sector_id": 1,
+    "encargado_id": 1,
+    "estado": "activo"
+  },
+  {
+    "id": 2,
+    "codigo": "SED-NORTE",
+    "nombre": "Sede Educativa Norte",
+    "direccion": "Calle Norte 250",
+    "sector_id": 2,
+    "encargado_id": 2,
+    "estado": "activo"
+  }
 ]

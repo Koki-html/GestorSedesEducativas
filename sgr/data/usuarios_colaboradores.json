@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "usuario": {
+      "username": "coordinador",
+      "email": "coordinador@example.com",
+      "first_name": "Ana",
+      "last_name": "Perez"
+    },
+    "nombres": "Ana",
+    "apellidos": "Perez",
+    "rut": "11111111-1",
+    "correo": "coordinador@example.com",
+    "cargo_id": 1,
+    "sede_id": 1,
+    "roles_ids": [1],
+    "estado": "activo"
+  },
+  {
+    "id": 2,
+    "usuario": {
+      "username": "tecnico",
+      "email": "tecnico@example.com",
+      "first_name": "Luis",
+      "last_name": "Gonzalez"
+    },
+    "nombres": "Luis",
+    "apellidos": "Gonzalez",
+    "rut": "22222222-2",
+    "correo": "tecnico@example.com",
+    "cargo_id": 2,
+    "sede_id": 1,
+    "roles_ids": [2],
+    "estado": "activo"
+  }
+]

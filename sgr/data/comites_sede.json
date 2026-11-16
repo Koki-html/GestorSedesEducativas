@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "codigo": "COM-001",
+    "nombre": "Comite de mantenimiento Centro",
+    "direccion": "Av. Principal 100",
+    "sede_id": 1,
+    "sector_id": 1,
+    "fecha_constitucion": "2026-01-05",
+    "estado": "activo"
+  },
+  {
+    "id": 2,
+    "codigo": "COM-002",
+    "nombre": "Comite de mantenimiento Norte",
+    "direccion": "Calle Norte 250",
+    "sede_id": 2,
+    "sector_id": 2,
+    "fecha_constitucion": "2026-02-10",
+    "estado": "activo"
+  }
+]

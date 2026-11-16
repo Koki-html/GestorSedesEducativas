@@ -122,7 +122,7 @@ Esta es la estructura principal del proyecto y de los archivos trabajados:
     │   ├── 📄 actividades.json
     │   ├── 📄 evidencias.json
     │   ├── 📄 compromisos.json
-    │   ├── 📄 periodos.json
+    │   ├── 📄 trimestres.json
     │   ├── 📄 metas.json
     │   └── 📄 resultados.json
     │
@@ -172,6 +172,12 @@ Tecnologías utilizadas
 |---|---|
 | Python | 3.14.7 |
 | Django | 6.1.1 |
+| dotenv | 0.9.9 |
+| python-dotenv | 1.2.4 |
+| MySQLClient | 2.3.0 |
+| sqlparse | 0.6.0
+| tzdata | 2026.3 | 
+| asgiref | 3.12.1
 
 En PowerShell, CMD o tu terminal de preferencia debes ejecutar el comando
 
@@ -236,3 +242,8 @@ deben configurar las variables `DB_ENGINE`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`,
 y `DB_PORT`, ejecutar `migrate` y luego `importar_datos`. El archivo `.env` no debe subirse
 al repositorio.
 
+Credenciales: 
+
+Usuario: Admin 
+
+Clave: Admin123

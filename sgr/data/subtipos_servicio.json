@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "codigo": "STS-ELECT",
+    "nombre": "Electricidad",
+    "tipo_id": 1,
+    "estado": "activo"
+  },
+  {
+    "id": 2,
+    "codigo": "STS-MOB",
+    "nombre": "Mobiliario",
+    "tipo_id": 2,
+    "estado": "activo"
+  }
+]

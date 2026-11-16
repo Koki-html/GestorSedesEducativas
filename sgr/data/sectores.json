@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "codigo": "SEC-CENTRO",
+    "nombre": "Sector Centro",
+    "descripcion": "Zona central de la sede educativa.",
+    "estado": "activo"
+  },
+  {
+    "id": 2,
+    "codigo": "SEC-NORTE",
+    "nombre": "Sector Norte",
+    "descripcion": "Zona norte de la sede educativa.",
+    "estado": "activo"
+  }
+]

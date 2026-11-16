@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "fecha_ingreso": "2026-01-10",
+    "fecha_atencion": "2026-01-12",
+    "solicitante_id": 1,
+    "tipo_id": 1,
+    "subtipo_id": 1,
+    "asignacion_meta_id": 1,
+    "visita": "Inspeccion inicial realizada.",
+    "actuaciones": "Revision de tablero electrico.",
+    "derivacion": "",
+    "informe": "Se detecto desgaste en un interruptor.",
+    "solucion": "Reemplazo del interruptor.",
+    "resultado": "Resuelto.",
+    "estado": "terminado"
+  },
+  {
+    "id": 2,
+    "fecha_ingreso": "2026-02-05",
+    "fecha_atencion": null,
+    "solicitante_id": 2,
+    "tipo_id": 2,
+    "subtipo_id": 2,
+    "asignacion_meta_id": 2,
+    "visita": "Visita programada.",
+    "actuaciones": "Revision de luminarias.",
+    "derivacion": "Derivada a servicios generales.",
+    "informe": "",
+    "solucion": "",
+    "resultado": "",
+    "estado": "activo"
+  }
+]

@@ -5,7 +5,7 @@
 <p>Administra las sedes y responsables del sistema.</p>
 
 <nav class="option-grid" aria-label="Opciones de organización">
-	<a class="menu-option" href="{% url 'organizacion:lista_sedes' %}">Ver lista de sedes</a>
-	<a class="menu-option" href="{% url 'organizacion:lista_responsables' %}">Ver lista de responsables</a>
+	<a class="menu-option" href="{% url 'organizacion:sedes_crud_list' %}">Gestionar sedes</a>
+	<a class="menu-option" href="{% url 'organizacion:colaboradores_list' %}">Gestionar responsables</a>
 </nav>
 {% endblock %}

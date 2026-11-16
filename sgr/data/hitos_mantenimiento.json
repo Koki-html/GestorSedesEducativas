@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "codigo": "HIT-001",
+    "nombre": "Revision electrica trimestral",
+    "descripcion": "Revision preventiva de instalaciones electricas.",
+    "periodicidad": "Trimestral",
+    "fecha_inicio": "2026-01-05",
+    "fecha_termino": "2026-12-31",
+    "sede_id": 1,
+    "sector_id": 1,
+    "responsables_ids": [2],
+    "estado": "activo"
+  },
+  {
+    "id": 2,
+    "codigo": "HIT-002",
+    "nombre": "Revision de luminarias",
+    "descripcion": "Inspeccion preventiva de luminarias interiores y exteriores.",
+    "periodicidad": "Mensual",
+    "fecha_inicio": "2026-01-15",
+    "fecha_termino": "2026-12-15",
+    "sede_id": 2,
+    "sector_id": 2,
+    "responsables_ids": [1],
+    "estado": "activo"
+  }
+]

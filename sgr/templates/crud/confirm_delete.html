@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>Eliminar {{ crud_title }}</h1>
+<p>¿Deseas eliminar <strong>{{ object }}</strong>?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar eliminación</button>
+    <a href="{% url crud_namespace|add:':'|add:detail_url_name object.pk %}">Cancelar</a>
+</form>
+{% endblock %}

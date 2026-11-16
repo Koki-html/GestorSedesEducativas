@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
-<h1>{{ responsable.nombre }}</h1>
+<h1>{{ responsable.nombres }} {{ responsable.apellidos }}</h1>
 <p><strong>Cargo:</strong> <span class="detail-value">{{ responsable.cargo }}</span></p>
-<p><strong>especialidad:</strong> <span class="detail-value">{{ responsable.especialidad }}</span></p>
-<p><strong>Sede:</strong> <span class="detail-value">{{ sede.nombre}}</span></p>
+<p><strong>Correo:</strong> <span class="detail-value">{{ responsable.correo }}</span></p>
+<p><strong>RUT:</strong> <span class="detail-value">{{ responsable.rut }}</span></p>
+<p><strong>Sede:</strong> <span class="detail-value">{{ responsable.sede }}</span></p>
 <a href="{% url 'organizacion:lista_responsables' %}">Volver a responsables</a>
 {% endblock %}

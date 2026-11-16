@@ -8,7 +8,7 @@
 	<section class="summary-panel">
 		<h2>Por estado</h2>
 		{% for estado in estados %}
-			<h3>{{ estado.nombre }} ({{ estado.cantidad }})</h3>
+			<h3>{{ estado.nombre|default:estado.estado }} ({{ estado.cantidad }})</h3>
 			<ul>
 				{% for compromiso in estado.compromisos %}
 					<li>
@@ -27,7 +27,7 @@
 	<section class="summary-panel">
 		<h2>Por prioridad</h2>
 		{% for prioridad in prioridades %}
-			<h3>{{ prioridad.nombre }} ({{ prioridad.cantidad }})</h3>
+			<h3>{{ prioridad.nombre|default:prioridad.prioridad }} ({{ prioridad.cantidad }})</h3>
 			<ul>
 				{% for compromiso in prioridad.compromisos %}
 					<li>

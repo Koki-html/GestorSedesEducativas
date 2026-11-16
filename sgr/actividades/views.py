@@ -1,113 +1,114 @@
-import json
-from pathlib import Path
+from django import forms
+from django.shortcuts import get_object_or_404, render
 
-from django.conf import settings
-from django.shortcuts import render
-from django.http import Http404
+from .models import (
+    ActividadMantenimiento,
+    EvidenciaMantenimiento,
+    SolicitudMantenimiento,
+)
 
-def cargar_datos(nombre_archivo):
-    """Carga una lista de Registros desde la carpeta data del proyecto."""
-    # BASE_DIR apunta a la carpeta del proyecto; desde allí se ubican los
-    # archivos JSON compartidos por las aplicaciones."""
-    ruta = Path(settings.BASE_DIR) / 'data' / nombre_archivo
-    contenido = ruta.read_text(encoding='utf-8').strip()
 
-    # Un archivo vacío representa una colección sin registros.
-    if not contenido:
-        return []
+class ActividadMantenimientoForm(forms.ModelForm):
+    """Formulario CRUD de ActividadMantenimiento."""
 
-    datos = json.loads(contenido)
+    class Meta:
+        model = ActividadMantenimiento
+        fields = '__all__'
 
-    # Las vistas esperan recorrer una lista, por eso se valida la estructura
-    # antes de devolver los datos.
-    if not isinstance(datos, list):
-        raise ValueError(f'{nombre_archivo} debe contener una lista JSON')
-    return datos
 
-def buscar_por_id(actividades, pk):
-    """Busca una actividad por su identificador."""
-    return next((actividad for actividad in actividades if actividad.get('id') == pk), None)
+class SolicitudMantenimientoForm(forms.ModelForm):
+    """Formulario CRUD de SolicitudMantenimiento."""
+
+    class Meta:
+        model = SolicitudMantenimiento
+        fields = '__all__'
+
+
+class EvidenciaMantenimientoForm(forms.ModelForm):
+    """Formulario CRUD de EvidenciaMantenimiento."""
+
+    class Meta:
+        model = EvidenciaMantenimiento
+        fields = '__all__'
+
 
 def inicio(request):
-    """Renderiza la pagina inicial del modulo de actividades."""
-    # Esta vista solo necesita cargar la plantilla del módulo.
-    return render(
-        request,
-        'actividades/inicio.html'
-        )
-    
+    """Renderiza la página inicial del módulo de actividades."""
+    return render(request, 'actividades/inicio.html')
+
+
 def lista_actividades(request):
-    """Muestra las actividades almacenadas en actividades.json."""
-    # Se cargan todas las actividades y se envían a la plantilla con la clave
-    # esperada por el contexto HTML.
-    actividades = cargar_datos('actividades.json')
+    """Muestra las actividades de mantenimiento."""
+    actividades = ActividadMantenimiento.objects.select_related(
+        'colaborador',
+        'asignacion_meta',
+        'hito',
+        'tipo',
+        'solicitante',
+        'sector',
+        'responsable',
+    ).order_by('-fecha', '-pk')
     return render(
         request,
         'actividades/lista_actividades.html',
-        {'actividades': actividades}
+        {'actividades': actividades},
     )
-    
+
+
 def detalle_actividad(request, pk):
-    """Muestra el detalle de una actividad o responde con un error 404."""
-    actividades = cargar_datos('actividades.json')
-    sedes = cargar_datos('sedes.json')
-    espacios = cargar_datos('espacios.json')
-    responsables = cargar_datos('responsables.json')
-    actividad = buscar_por_id(actividades, pk)
-
-    # Evita renderizar una página vacía cuando el identificador no existe.
-    if actividad is None:
-        raise Http404("Actividad no encontrada")
-
-    sede = buscar_por_id(sedes, actividad['sede_id'])
-    espacio = buscar_por_id(espacios, actividad['espacio_id'])
-    responsable = buscar_por_id(responsables, actividad['responsable_id'])
-
+    """Muestra el detalle de una actividad de mantenimiento."""
+    actividad = get_object_or_404(
+        ActividadMantenimiento.objects.select_related(
+            'colaborador',
+            'asignacion_meta',
+            'hito',
+            'tipo',
+            'solicitante',
+            'sector',
+            'responsable',
+        ),
+        pk=pk,
+    )
     return render(
         request,
         'actividades/detalle_actividad.html',
-        {
-            'actividad': actividad,
-            'sede': sede,
-            'espacio': espacio,
-            'responsable': responsable,
-        }
+        {'actividad': actividad},
     )
-    
+
+
 def lista_evidencias(request):
-    """Muestra las evidencias almacenadas en evidencias.json."""
-    evidencias = cargar_datos('evidencias.json')
+    """Muestra las evidencias de mantenimiento."""
+    evidencias = EvidenciaMantenimiento.objects.select_related(
+        'actividad',
+        'solicitud',
+        'autor',
+        'verificador',
+    ).order_by('-fecha', '-pk')
     return render(
         request,
         'actividades/lista_evidencias.html',
-        {'evidencias': evidencias}
+        {'evidencias': evidencias},
     )
 
+
 def detalle_evidencia(request, pk):
-    """Muestra el detalle de una evidencia o responde con un error 404."""
-    evidencias = cargar_datos('evidencias.json')
-    evidencia = buscar_por_id(evidencias, pk)
-
-    # Evita renderizar una página vacía cuando el identificador no existe.
-    if evidencia is None:
-        raise Http404("Evidencia no encontrada")
-
+    """Muestra el detalle de una evidencia."""
+    evidencia = get_object_or_404(
+        EvidenciaMantenimiento.objects.select_related(
+            'actividad',
+            'solicitud',
+            'autor',
+            'verificador',
+        ),
+        pk=pk,
+    )
     return render(
         request,
         'actividades/detalle_evidencia.html',
-        {'evidencia': evidencia}
+        {'evidencia': evidencia},
     )
+
 
 def evidence(request, pk):
-    """Muestra el archivo de evidencia guardado en evidencias.json."""
-    evidencias = cargar_datos('evidencias.json')
-    evidencia = buscar_por_id(evidencias, pk)
-
-    if evidencia is None:
-        raise Http404("Evidencia no encontrada")
-
-    return render(
-        request,
-        'actividades/evidence.html',
-        {'evidencia': evidencia}
-    )
+    """Conserva la ruta histórica para abrir el detalle de la evidencia."""
+    return detalle_evidencia(request, pk)

@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "codigo": "TS-INFRA",
+    "nombre": "Infraestructura",
+    "descripcion": "Trabajos sobre infraestructura y espacios.",
+    "estado": "activo"
+  },
+  {
+    "id": 2,
+    "codigo": "TS-EQUIP",
+    "nombre": "Equipamiento",
+    "descripcion": "Mantencion de equipamiento educativo.",
+    "estado": "activo"
+  }
+]

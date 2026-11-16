@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "colaborador_id": 1,
+    "meta_id": 1,
+    "trimestre_id": 1,
+    "cantidad_objetivo": "20.00",
+    "ponderacion": "100.00",
+    "fecha_asignacion": "2026-01-02",
+    "observacion": "Asignacion inicial del periodo.",
+    "estado": "activo"
+  },
+  {
+    "id": 2,
+    "colaborador_id": 2,
+    "meta_id": 2,
+    "trimestre_id": 2,
+    "cantidad_objetivo": "15.00",
+    "ponderacion": "80.00",
+    "fecha_asignacion": "2026-04-01",
+    "observacion": "Asignacion para el segundo trimestre.",
+    "estado": "activo"
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "solicitante_id": 1,
+    "comite_id": 1,
+    "es_coordinador": true,
+    "cargo_id": 1,
+    "fecha_incorporacion": "2026-01-05",
+    "estado": "activo"
+  },
+  {
+    "id": 2,
+    "solicitante_id": 2,
+    "comite_id": 2,
+    "es_coordinador": false,
+    "cargo_id": 2,
+    "fecha_incorporacion": "2026-02-10",
+    "estado": "activo"
+  }
+]

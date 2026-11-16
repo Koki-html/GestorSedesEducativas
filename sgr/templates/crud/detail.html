@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<h1>{{ object }}</h1>
+
+{% for label, value in field_rows %}
+    <p><strong>{{ label }}:</strong> <span class="detail-value">{{ value }}</span></p>
+{% endfor %}
+
+<p>
+    {% if can_change %}
+        <a href="{% url crud_namespace|add:':'|add:update_url_name object.pk %}">Editar</a>
+    {% endif %}
+    {% if can_delete %}
+        |
+        <a href="{% url crud_namespace|add:':'|add:delete_url_name object.pk %}">Eliminar</a>
+    {% endif %}
+    |
+    <a href="{% url crud_namespace|add:':'|add:list_url_name %}">Volver</a>
+</p>
+{% endblock %}
