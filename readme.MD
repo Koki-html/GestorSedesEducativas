@@ -237,7 +237,7 @@ La siguiente matriz resume las operaciones disponibles mediante las vistas CRUD
 del sistema. Todas las operaciones están protegidas por autenticación y por el
 permiso Django correspondiente al modelo.
 
-| Aplicación | Entidad | Ruta base CRUD | Crear | Leer | Actualizar | Eliminar |
+| Aplicación | Entidad | URL de Crud | Crear | Leer | Actualizar | Eliminar |
 |---|---|---|:---:|:---:|:---:|:---:|
 | `organizacion` | `Sector` | `/organizacion/crud/sectores/` | Sí | Sí | Sí | Sí |
 | `organizacion` | `SedeEducativa` | `/organizacion/crud/sedes_crud/` | Sí | Sí | Sí | Sí |
