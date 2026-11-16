@@ -13,5 +13,4 @@ La inteligencia artificial se empleó principalmente para:
 - Apoyar la redacción de comentarios y explicaciones técnicas.
 
 La revisión, adaptación, integración y validación final de los cambios fueron
-realizadas por el autor del proyecto, quien mantiene la responsabilidad sobre
-el código, su funcionamiento y sus resultados.
+realizadas por el autor del proyecto.

@@ -1,249 +1,269 @@
-## Proyecto de Backend
----
+# Gestor de Sedes Educativas
 
+Aplicación web desarrollada con Django para centralizar la gestión de sedes
+educativas, espacios, colaboradores, solicitudes de mantenimiento, actividades,
+evidencias, compromisos y resultados.
 
-* Este proyecto fue desarrollado por el estudiante ***Miguel Burgos*** de manera individual para la asignatura ***Programación Backend***, sección ***D-IEI-N4-P2-C2***, cursada en ***INACAP - La Serena*** y dictada por la profesora ***Mariavictoria***.
+El proyecto fue desarrollado individualmente por el estudiante **Miguel
+Burgos** para la asignatura **Programación Backend**, sección
+**D-IEI-N4-P2-C2**, de **INACAP - La Serena**. Se utilizó inteligencia
+artificial como herramienta de apoyo para generar datos, revisar código,
+organizar el trabajo y redactar documentación. La revisión, integración y
+validación final corresponden al autor del proyecto. El detalle se encuentra
+en [`declaracion_de_uso_de_ia.md`](declaracion_de_uso_de_ia.md).
 
-* El contenido en su totalidad fue pensado, programado y depurado por el estudiante, con apoyo de la inteligencia artificial en procesos como:
-    * Generación de datos en archivos JSON.
-    * Optimización del flujo de trabajo, como transcribir código o realizar ajustes grandes.
-    * Organización del trabajo, como generar un paso a paso para avanzar e ir registrando el progreso.
-    * Apoyo para comentar el código.
+## Contenido
 
-<small> Información del Proyecto </small>
-Todo este trabajo fue desarrollado a partir del siguiente caso ficticio:
+- [Características](#características)
+- [Módulos](#módulos)
+- [Requisitos](#requisitos)
+- [Instalación](#instalación)
+- [Configuración de la base de datos](#configuración-de-la-base-de-datos)
+- [Carga de datos iniciales](#carga-de-datos-iniciales)
+- [Ejecución](#ejecución)
+- [Rutas principales](#rutas-principales)
+- [Estructura del proyecto](#estructura-del-proyecto)
+- [Modelo de datos](#modelo-de-datos)
+- [Permisos y autenticación](#permisos-y-autenticación)
+- [Estado actual y limitaciones](#estado-actual-y-limitaciones)
+- [Seguridad](#seguridad)
 
-### 1. Contexto y problema
-La organización administra sedes educativas con salas, laboratorios, oficinas y espacios comunes. El sistema centraliza el registro de actividades, responsables, evidencias, compromisos y resultados para facilitar el seguimiento y la toma de decisiones.
+## Características
 
-### 2. Objetivo general
-Centralizar el registro, seguimiento, verificación y medición del mantenimiento de las sedes educativas, entregando información comparable por responsable, sede, tipo de trabajo y período.
+- Panel web construido con Django y plantillas HTML.
+- Persistencia en MySQL mediante el backend `mysqlclient`.
+- Administración de catálogos y entidades mediante el panel de Django y vistas
+  CRUD protegidas por autenticación y permisos.
+- Inicio de sesión y cierre de sesión integrados con el sistema de usuarios de
+  Django.
+- Importación idempotente de datos iniciales desde archivos JSON.
+- Seguimiento de actividades, solicitudes, evidencias, compromisos, metas,
+  asignaciones y resultados.
+- Paneles e informes organizados por sede, responsable y meta.
 
-### 3. Actores
-
-| Actor | Responsabilidad |
-|---|---|
-| `Administrador` | Mantiene sedes, responsables, cargos, áreas y parámetros generales. |
-| `Coordinador central` | Supervisa solicitudes, compromisos, indicadores y resultados de todas las sedes. |
-| `Encargado de sede` | Registra necesidades, consulta trabajos y revisa compromisos de su sede. |
-| `Técnico o responsable` | Registra actividades realizadas, avances y evidencias. |
-| `Verificador` | Aprueba, rechaza o solicita corrección de evidencias. |
-| `Usuario de consulta` | Consulta paneles e informes sin modificar información. |
-
-### 4. Aplicaciones del proyecto
+## Módulos
 
 | Aplicación | Responsabilidad |
 |---|---|
-| `organizacion` | Sedes, espacios, responsables, cargos y áreas de mantenimiento. |
-| `actividades` | Actividades realizadas, servicios, evidencias y validaciones. |
-| `agenda` | Compromisos programados, responsables, plazos, estados y observaciones. |
-| `resultados` | Períodos, metas, asignaciones, cumplimiento, semáforos, paneles e informes. |
+| `organizacion` | Sectores, sedes educativas, espacios, cargos, roles, colaboradores, solicitantes, comités y servicios. |
+| `actividades` | Solicitudes de mantenimiento, actividades y evidencias. |
+| `agenda` | Compromisos, responsables, fechas, prioridades y estados. |
+| `resultados` | Trimestres, metas de mantenimiento, asignaciones y resultados. |
 
-A partir de esto y de algunas reglas adicionales se desarrolla el sistema, buscando cumplir con lo solicitado en estos puntos.
+### Reglas de negocio representadas
 
-### 5. Reglas de negocio
+- Las entidades se relacionan con sedes, sectores, colaboradores, servicios y
+  trimestres según corresponda.
+- Los catálogos y entidades principales utilizan códigos únicos cuando el
+  modelo los requiere.
+- Los estados se controlan mediante opciones como `activo`, `inactivo` y
+  `terminado`.
+- Las evidencias pueden asociarse a una actividad o a una solicitud y registrar
+  autor, verificador, fecha, estado y observaciones.
+- Las metas se asignan a colaboradores y trimestres mediante
+  `AsignacionMeta`.
+- El avance y el resultado se almacenan en los modelos de actividades y
+  resultados para su consulta en los paneles.
 
-- Cada actividad y compromiso pertenece a una sede y debe identificar un responsable.
-- La prioridad puede ser baja, media, alta o crítica.
-- Los compromisos utilizan los estados Ingresado, Pendiente, En proceso y Realizado.
-- Una evidencia conserva código, actividad asociada, fecha, estado y observación de revisión.
-- Una actividad rechazada no aumenta el avance hasta ser corregida y aprobada.
-- **Cumplimiento (%) = avance aprobado / meta del período × 100.**
-- **Semáforo:** verde si alcanza lo esperado, ámbar si está entre 60 % y menos de lo esperado, y rojo si está bajo 60 %.
+## Requisitos
 
-### 6. Progreso del proyecto
+- Python 3.14 o una versión compatible con las dependencias del proyecto.
+- MySQL en ejecución y una base de datos creada para la aplicación.
+- `pip` y un entorno virtual recomendado.
+- En Windows, los requisitos de compilación que `mysqlclient` pueda necesitar
+  durante su instalación.
 
-| Unidad | Producto esperado | Tecnología o crecimiento |
-|---|---|---|
-| Unidad 1 | Prototipo de consulta con las cuatro aplicaciones, vistas, plantillas, CSS y JSON. | Sin modelos ni base de datos. |
-| Unidad 2 | Persistencia de sedes, responsables, actividades, agenda, metas y resultados. | Modelos, relaciones, migraciones, MySQL y panel de administración. |
-| Unidad 3 | Operación del sistema por roles. | CRUD, formularios, validaciones, autenticación y permisos. |
-| Unidad 4 | Intercambio y consulta externa. | API, endpoints, pruebas y documentación. |
+Las versiones declaradas actualmente están en
+[`requirements.txt`](requirements.txt), incluyendo Django 6.1.1,
+`mysqlclient` 2.3.0 y `python-dotenv` 1.2.4.
 
-### 7. Estado actual y limitaciones
+## Instalación
 
-El proyecto utiliza modelos Django, migraciones y el panel administrativo para gestionar
-los registros de organización, actividades, agenda y resultados. Los archivos JSON se
-conservan como fuente inicial de datos y pueden importarse a la base de datos mediante el
-comando `importar_datos`.
+Desde la raíz del repositorio, en PowerShell:
 
-Todavía no se incluyen:
-* API pública.
-* Formularios personalizados fuera del administrador.
-* Permisos específicos por rol.
-* Autenticación de usuarios finales con perfiles propios.
-
-### 8. Estructura del Proyecto
-
-Esta es la estructura principal del proyecto y de los archivos trabajados:
-```text
-📦 GestorSedesEducativas
-└── 📁 sgr/                              Proyecto Django
-    ├── 📁 sgr/                           Configuración utilizada
-    │   ├── ⚙️ settings.py                Configuración del proyecto
-    │   ├── 🔗 urls.py                    Rutas principales
-    │   └── 👁️ views.py                   Vista de inicio
-    │
-    ├── 📁 organizacion/                  Sedes y responsables
-    │   ├── ⚙️ admin.py                   Configuración del CRUD administrativo
-    │   ├── 🧱 models.py                  Modelos de sedes y responsables
-    │   ├── 🔗 urls.py                    Rutas de organización
-    │   ├── 👁️ views.py                   Vistas del módulo
-    │   ├── 📁 migrations/                Migraciones de la aplicación
-    │   └── 📁 management/                Comandos personalizados de Django
-    │       └── 📁 commands/
-    │           └── 📄 importar_datos.py
-    │
-    ├── 📁 actividades/                   Actividades y evidencias
-    │   ├── ⚙️ admin.py                   Configuración del CRUD administrativo
-    │   ├── 🧱 models.py                  Modelos de actividades y evidencias
-    │   ├── 🔗 urls.py                    Rutas de actividades
-    │   ├── 👁️ views.py                   Vistas del módulo
-    │   └── 📁 migrations/                Migraciones de la aplicación
-    │
-    ├── 📁 agenda/                        Compromisos y prioridades
-    │   ├── ⚙️ admin.py                   Configuración del CRUD administrativo
-    │   ├── 🧱 models.py                  Modelo de compromisos
-    │   ├── 🔗 urls.py                    Rutas de agenda
-    │   ├── 👁️ views.py                   Vistas del módulo
-    │   └── 📁 migrations/                Migraciones de la aplicación
-    │
-    ├── 📁 resultados/                    Metas, avances e informes
-    │   ├── ⚙️ admin.py                   Configuración del CRUD administrativo
-    │   ├── 🧱 models.py                  Modelos de períodos, metas y resultados
-    │   ├── 🔗 urls.py                    Rutas de resultados
-    │   ├── 👁️ views.py                   Vistas del módulo
-    │   └── 📁 migrations/                Migraciones de la aplicación
-    │
-    ├── 📁 data/                          Datos iniciales del sistema en JSON
-    │   ├── 📄 sedes.json
-    │   ├── 📄 espacios.json
-    │   ├── 📄 responsables.json
-    │   ├── 📄 actividades.json
-    │   ├── 📄 evidencias.json
-    │   ├── 📄 compromisos.json
-    │   ├── 📄 trimestres.json
-    │   ├── 📄 metas.json
-    │   └── 📄 resultados.json
-    │
-    ├── 📁 templates/                     Plantillas HTML
-    │   ├── 📄 base.html                  Plantilla base
-    │   ├── 📄 inicio.html                Página principal
-    │   ├── 📁 organizacion/
-    │   │   ├── 📄 inicio.html
-    │   │   ├── 📄 lista_sedes.html
-    │   │   ├── 📄 detalle_sede.html
-    │   │   ├── 📄 lista_responsables.html
-    │   │   └── 📄 detalle_responsable.html
-    │   ├── 📁 actividades/
-    │   │   ├── 📄 inicio.html
-    │   │   ├── 📄 lista_actividades.html
-    │   │   ├── 📄 detalle_actividad.html
-    │   │   ├── 📄 lista_evidencias.html
-    │   │   ├── 📄 detalle_evidencia.html
-    │   │   └── 📄 evidence.html
-    │   ├── 📁 agenda/
-    │   │   ├── 📄 inicio.html
-    │   │   ├── 📄 lista_compromisos.html
-    │   │   ├── 📄 detalle_compromiso.html
-    │   │   ├── 📄 lista_reuniones.html
-    │   │   └── 📄 resumen_agenda.html
-    │   └── 📁 resultados/
-    │       ├── 📄 inicio.html
-    │       ├── 📄 lista_metas.html
-    │       ├── 📄 detalle_meta.html
-    │       ├── 📄 resultado_responsable.html
-    │       ├── 📄 tablero_sede.html
-    │       └── 📄 informe_resumen.html
-    │
-    ├── 📁 static/css/                    Estilos generales
-        └── 🎨 style.css
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r .\requirements.txt
 ```
 
-Cada aplicación contiene sus modelos, migraciones, vistas, rutas y configuración de administración.
-La carpeta `sgr/data/` contiene los datos iniciales y `templates/` y `static/` concentran la
-presentación visual del sistema.
+## Configuración de la base de datos
 
-### 9. Uso del proyecto
+La configuración se lee desde un archivo `.env` ubicado en la raíz del
+repositorio, al mismo nivel que `requirements.txt`. Este archivo está excluido
+del control de versiones.
 
-Tecnologías utilizadas
+Crear `.env` con las siguientes variables:
 
-| Tecnología | Versión usada |
-|---|---|
-| Python | 3.14.7 |
-| Django | 6.1.1 |
-| dotenv | 0.9.9 |
-| python-dotenv | 1.2.4 |
-| MySQLClient | 2.3.0 |
-| sqlparse | 0.6.0
-| tzdata | 2026.3 | 
-| asgiref | 3.12.1
-
-En PowerShell, CMD o tu terminal de preferencia debes ejecutar el comando
-
-```
-python .\sgr\manage.py check
+```dotenv
+DB_NAME=gestiondesedes
+DB_USER=tu_usuario
+DB_PASSWORD=tu_clave
+DB_HOST=localhost
+DB_PORT=3306
 ```
 
-al ejecutar este comando debe de aparecer lo siguente:
+La base de datos `gestiondesedes` debe existir antes de ejecutar las
+migraciones. Por ejemplo, desde el cliente de MySQL:
 
-```
-System check identified no issues (0 silenced).
+```sql
+CREATE DATABASE gestiondesedes;
 ```
 
-Para crear o actualizar las tablas de la base de datos:
+El proyecto utiliza MySQL en la configuración actual de
+[`sgr/sgr/settings.py`](sgr/sgr/settings.py); el archivo `db.sqlite3` no es la
+base configurada para esta instalación.
 
-```
+## Carga de datos iniciales
+
+Aplicar las migraciones:
+
+```powershell
 python .\sgr\manage.py migrate
 ```
 
-Para cargar todos los archivos JSON en la base de datos sin duplicar registros:
+Importar los datos JSON:
 
-```
+```powershell
 python .\sgr\manage.py importar_datos
 ```
 
-El comando puede ejecutarse nuevamente cuando cambien los JSON; utiliza los identificadores
-de los archivos para actualizar los registros existentes.
+El comando carga los archivos de [`sgr/data/`](sgr/data/) en el orden necesario
+para respetar sus relaciones. Utiliza el identificador de cada registro y
+`update_or_create`, por lo que puede ejecutarse nuevamente para actualizar los
+datos sin duplicarlos.
 
-Tras ello, se puede iniciar el servidor con el siguente comando:
+Los archivos de datos incluyen catálogos, sedes, colaboradores, comités,
+espacios, solicitudes, actividades, evidencias, compromisos, trimestres, metas,
+asignaciones y resultados.
 
+## Ejecución
+
+Comprobar la configuración del proyecto:
+
+```powershell
+python .\sgr\manage.py check
 ```
+
+Iniciar el servidor de desarrollo:
+
+```powershell
 python .\sgr\manage.py runserver
 ```
 
+Abrir en el navegador:
 
-De ahí, simplemente hay que abrir el navegador en [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
+- Sitio principal: <http://127.0.0.1:8000/>
+- Inicio de sesión: <http://127.0.0.1:8000/login/>
+- Panel administrativo: <http://127.0.0.1:8000/admin/>
 
-Todos los datos para el uso de esta aplicación están en la carpeta [sgr/data/](sgr/data/).
+Crear un usuario administrador para el panel:
 
-El panel administrativo está disponible en [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/).
-Para crear el usuario administrador:
-
-```
+```powershell
 python .\sgr\manage.py createsuperuser
 ```
 
-Para detener el servidor, presiona `Ctrl + C`.
+Para detener el servidor, presionar `Ctrl+C`.
 
-### 10. Herramientas de apoyo
+## Rutas principales
 
-Se utilizaron herramientas de inteligencia artificial como apoyo para generar datos,
-comentar código, revisar avances y agilizar tareas repetitivas. La estructura, integración
-y validación del proyecto se realizaron sobre el código de este repositorio.
-#### Alcance actual
+| Ruta | Funcionalidad |
+|---|---|
+| `/` | Portada del sistema. |
+| `/login/` y `/logout/` | Autenticación de usuarios. |
+| `/admin/` | Panel administrativo de Django. |
+| `/organizacion/` | Consulta de sedes y responsables, además de CRUD de organización. |
+| `/actividades/` | Consulta de actividades y evidencias, además de CRUD de mantenimiento. |
+| `/agenda/` | Consulta, resumen y CRUD de compromisos. |
+| `/resultados/` | Metas, resultados, informes y tableros. |
 
-El proyecto implementa principalmente las **Unidades 1 y 2**: funciona como una aplicación
-de consulta construida con Django, cuatro aplicaciones, plantillas, CSS, archivos JSON,
-modelos, migraciones, persistencia y CRUD mediante el panel administrativo.
+Cada módulo también expone rutas CRUD bajo `/crud/`, por ejemplo:
+`/organizacion/crud/sectores/` y
+`/actividades/crud/actividades_crud/`.
 
-Para conservar los datos en AWS se recomienda utilizar Amazon RDS MySQL. En producción se
-deben configurar las variables `DB_ENGINE`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_HOST`
-y `DB_PORT`, ejecutar `migrate` y luego `importar_datos`. El archivo `.env` no debe subirse
-al repositorio.
+## Estructura del proyecto
 
-Credenciales: 
+```text
+GestorSedesEducativas/
+├── .env                         Configuración local, no versionada
+├── requirements.txt             Dependencias de Python
+├── readme.MD                    Documentación del proyecto
+├── cambios.txt                  Registro de cambios
+├── sgr/
+│   ├── manage.py                Entrada para comandos Django
+│   ├── sgr/
+│   │   ├── settings.py          Configuración
+│   │   ├── urls.py              Rutas principales
+│   │   ├── views.py             Vista de inicio
+│   │   ├── crud.py              Vistas CRUD reutilizables
+│   │   ├── asgi.py              Punto de entrada ASGI
+│   │   └── wsgi.py              Punto de entrada WSGI
+│   ├── organizacion/            Aplicación de organización
+│   ├── actividades/             Aplicación de mantenimiento
+│   ├── agenda/                  Aplicación de compromisos
+│   ├── resultados/              Aplicación de metas y resultados
+│   ├── data/                    Datos iniciales en JSON
+│   ├── templates/                Plantillas HTML
+│   └── static/                  CSS e imágenes
+└── .gitignore
+```
 
-Usuario: Admin 
+Cada aplicación contiene sus modelos, vistas, rutas, administración,
+migraciones y pruebas. Las plantillas y los recursos estáticos se encuentran
+en las carpetas del proyecto Django (`sgr/templates/` y `sgr/static/`).
 
-Clave: Admin123
+## Modelo de datos
+
+Las entidades principales son:
+
+- **Organización:** `Sector`, `SedeEducativa`, `Espacio`, `Cargo`, `Rol`,
+  `UsuarioColaborador`, `Solicitante`, `ComiteSede`,
+  `ParticipacionComite`, `HitoMantenimiento`, `TipoServicio` y
+  `SubtipoServicio`.
+- **Actividades:** `SolicitudMantenimiento`, `ActividadMantenimiento` y
+  `EvidenciaMantenimiento`.
+- **Agenda:** `Compromiso`.
+- **Resultados:** `Trimestre`, `MetaMantenimiento`, `AsignacionMeta` y
+  `Resultado`.
+
+Los modelos se encuentran en `sgr/<aplicacion>/models.py` y sus cambios de
+esquema se registran en las carpetas `migrations/`.
+
+## Permisos y autenticación
+
+Las vistas CRUD requieren un usuario autenticado y el permiso Django
+correspondiente para ver, crear, modificar o eliminar cada modelo. Los roles
+del dominio se relacionan con grupos de Django mediante el modelo `Rol`.
+
+Después de crear un superusuario, los grupos, usuarios y permisos pueden
+administrarse desde `/admin/`. El comando `importar_datos` también crea los
+grupos asociados a los roles definidos en `sgr/data/roles.json`.
+
+## Estado actual y limitaciones
+
+El proyecto implementa una aplicación Django funcional con persistencia,
+migraciones, importación de datos, autenticación, permisos CRUD, panel
+administrativo, consultas y vistas de seguimiento.
+
+Actualmente:
+
+- No existe una API pública o documentación de endpoints REST.
+- La configuración está orientada al desarrollo local.
+- Los formularios y vistas están implementados con Django y plantillas; no se
+  incluye un frontend separado.
+- No se incluye un flujo de despliegue automatizado para producción.
+- La configuración de producción debe definir una `SECRET_KEY` segura,
+  desactivar `DEBUG` y establecer `ALLOWED_HOSTS` antes de publicar el sistema.
+
+## Seguridad
+
+- No subir `.env`, contraseñas ni claves privadas al repositorio.
+- No usar credenciales reales en archivos JSON de datos o documentación.
+- Crear usuarios y asignar permisos desde Django en lugar de compartir
+  credenciales.
+
+## Créditos y uso de IA
+
+La declaración completa sobre el uso de inteligencia artificial está en
+[`declaracion_de_uso_de_ia.md`](declaracion_de_uso_de_ia.md).
