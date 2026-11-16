@@ -24,6 +24,7 @@ en [`declaracion_de_uso_de_ia.md`](declaracion_de_uso_de_ia.md).
 - [Rutas principales](#rutas-principales)
 - [Estructura del proyecto](#estructura-del-proyecto)
 - [Modelo de datos](#modelo-de-datos)
+- [Matriz CRUD](#matriz-crud)
 - [Permisos y autenticación](#permisos-y-autenticación)
 - [Estado actual y limitaciones](#estado-actual-y-limitaciones)
 - [Seguridad](#seguridad)
@@ -229,6 +230,43 @@ Las entidades principales son:
 
 Los modelos se encuentran en `sgr/<aplicacion>/models.py` y sus cambios de
 esquema se registran en las carpetas `migrations/`.
+
+## Matriz CRUD
+
+La siguiente matriz resume las operaciones disponibles mediante las vistas CRUD
+del sistema. Todas las operaciones están protegidas por autenticación y por el
+permiso Django correspondiente al modelo.
+
+| Aplicación | Entidad | Ruta base CRUD | Crear | Leer | Actualizar | Eliminar |
+|---|---|---|:---:|:---:|:---:|:---:|
+| `organizacion` | `Sector` | `/organizacion/crud/sectores/` | Sí | Sí | Sí | Sí |
+| `organizacion` | `SedeEducativa` | `/organizacion/crud/sedes_crud/` | Sí | Sí | Sí | Sí |
+| `organizacion` | `Cargo` | `/organizacion/crud/cargos/` | Sí | Sí | Sí | Sí |
+| `organizacion` | `Rol` | `/organizacion/crud/roles/` | Sí | Sí | Sí | Sí |
+| `organizacion` | `UsuarioColaborador` | `/organizacion/crud/colaboradores/` | Sí | Sí | Sí | Sí |
+| `organizacion` | `Solicitante` | `/organizacion/crud/solicitantes/` | Sí | Sí | Sí | Sí |
+| `organizacion` | `ComiteSede` | `/organizacion/crud/comites/` | Sí | Sí | Sí | Sí |
+| `organizacion` | `ParticipacionComite` | `/organizacion/crud/participaciones/` | Sí | Sí | Sí | Sí |
+| `organizacion` | `HitoMantenimiento` | `/organizacion/crud/hitos/` | Sí | Sí | Sí | Sí |
+| `organizacion` | `Espacio` | `/organizacion/crud/espacios/` | Sí | Sí | Sí | Sí |
+| `organizacion` | `TipoServicio` | `/organizacion/crud/tipos_servicio/` | Sí | Sí | Sí | Sí |
+| `organizacion` | `SubtipoServicio` | `/organizacion/crud/subtipos_servicio/` | Sí | Sí | Sí | Sí |
+| `actividades` | `ActividadMantenimiento` | `/actividades/crud/actividades_crud/` | Sí | Sí | Sí | Sí |
+| `actividades` | `SolicitudMantenimiento` | `/actividades/crud/solicitudes/` | Sí | Sí | Sí | Sí |
+| `actividades` | `EvidenciaMantenimiento` | `/actividades/crud/evidencias_crud/` | Sí | Sí | Sí | Sí |
+| `agenda` | `Compromiso` | `/agenda/crud/compromisos/` | Sí | Sí | Sí | Sí |
+| `resultados` | `Trimestre` | `/resultados/crud/trimestres/` | Sí | Sí | Sí | Sí |
+| `resultados` | `MetaMantenimiento` | `/resultados/crud/metas_crud/` | Sí | Sí | Sí | Sí |
+| `resultados` | `AsignacionMeta` | `/resultados/crud/asignaciones/` | Sí | Sí | Sí | Sí |
+| `resultados` | `Resultado` | `/resultados/crud/resultados_crud/` | Sí | Sí | Sí | Sí |
+
+Cada ruta base dispone de las siguientes acciones:
+
+- `.../`: listado.
+- `.../nuevo/`: creación.
+- `.../<id>/`: detalle.
+- `.../<id>/editar/`: actualización.
+- `.../<id>/eliminar/`: eliminación.
 
 ## Permisos y autenticación
 
