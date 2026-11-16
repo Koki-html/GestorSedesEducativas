@@ -189,7 +189,7 @@ GestorSedesEducativas/
 ├── .env                         Configuración local, no versionada
 ├── requirements.txt             Dependencias de Python
 ├── readme.MD                    Documentación del proyecto
-├── cambios.txt                  Registro de cambios
+├── cambios.md                   Registro de cambios
 ├── sgr/
 │   ├── manage.py                Entrada para comandos Django
 │   ├── sgr/
